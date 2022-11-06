@@ -2,7 +2,7 @@
   "name": "botvote",
   "version": "1.0.0",
   "description": "First time Discord Bot",
-  "main": "server.js",
+  "main": "dist/Server.js",
   "scripts": {
     "build": "tsc",
     "test": "ts-node src/Server.ts",

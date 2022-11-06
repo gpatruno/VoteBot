@@ -9,7 +9,7 @@ export const Help: Command = {
         const content = "Liste des commandes disponibles : \n"
             + "- help              Montre les commandes disponibles\n"
             + "- ping              Retourne le ping du message\n"
-            + "- muta < username > (Créé un vote pour mute un joueur -> <username>)\n"
+            + "- muta <username> (Créé un vote pour mute un joueur -> <username>)\n"
             + "- move <username> <destination> (Créé un vote pour move un joueur -> <username> vers la destination -> <destination>)\n"
             + "- kick <username>   (Créé un vote pour kick un joueur -> <username>)\n"
             + "- ban  <username>   (Créé un vote pour bannir un joueur -> <username>)\n"

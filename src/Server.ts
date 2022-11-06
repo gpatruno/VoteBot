@@ -1,6 +1,7 @@
 require('dotenv').config();
 import { Client, IntentsBitField } from "discord.js";
 import InteractionCreate from "./listeners/InteractionCreate";
+import MessageCreate from "./listeners/MessageCreate";
 import Ready from "./listeners/Ready";
 
 console.log("Bot is starting...");
@@ -13,5 +14,6 @@ const client: Client<boolean> = new Client({
 
 Ready(client);
 InteractionCreate(client);
+MessageCreate(client);
 
 client.login(process.env.TOKEN);
