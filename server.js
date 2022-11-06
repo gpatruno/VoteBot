@@ -1,13 +1,13 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
+require('dotenv').config()
 
 const myIntents = new Discord.IntentsBitField();
 myIntents.add(Discord.IntentsBitField.Flags.GuildMessages, Discord.IntentsBitField.Flags.Guilds, Discord.IntentsBitField.Flags.MessageContent);
 const client = new Discord.Client({ intents: myIntents });
 
 const prefix = "!";
-let idUserCreateVote = "Stakeholder";
-let idUserToVote = "Zoinloz";
+let idUserCreateVote = "";
+let idUserToVote = "";
 let currentVote = null;
 
 client.on('ready', () => {
@@ -24,21 +24,6 @@ client.on("messageCreate", function (message) {
     const command = args.shift().toLowerCase();
 
     switch (command) {
-        case "ping":
-            const timeTaken = Date.now() - message.createdTimestamp;
-            message.reply(`Pong! This message had a latency of ${timeTaken}ms.`);
-            break;
-        case "help":
-            message.reply("Liste des commandes disponibles : \n"
-                + "- HELP              Montre les commandes disponibles\n"
-                + "- MUTE < username > (Créé un vote pour mute un joueur -> <username>)\n"
-                + "- MOVE <username> <destination> (Créé un vote pour move un joueur -> <username> vers la destination -> <destination>)\n"
-                + "- KICK <username>   (Créé un vote pour kick un joueur -> <username>)\n"
-                + "- BAN  <username>   (Créé un vote pour bannir un joueur -> <username>)\n"
-                + "- VOTE <yes/no>     (Permet de voter pour le vote en cours)\n"
-                + "- SHOW              (Montre le vote en cours avec le nombre de vote Oui/Non)"
-            );
-            break;
         case "current":
             if (idUserCreateVote) {
                 message.reply(`The current vote is created by: ${idUserCreateVote}`);
@@ -58,4 +43,4 @@ client.on("messageCreate", function (message) {
     }
 });
 
-client.login(config.BOT_TOKEN);
+client.login(process.env.TOKEN);
