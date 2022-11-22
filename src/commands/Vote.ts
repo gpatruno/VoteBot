@@ -1,5 +1,6 @@
 import { CommandInteraction, Client, ApplicationCommandType } from "discord.js";
 import { Command } from "../Command";
+import Singleton from '../Singleton';
 
 export const Vote: Command = {
     name: "vote",
@@ -7,7 +8,6 @@ export const Vote: Command = {
     type: ApplicationCommandType.ChatInput,
     run: async (client: Client, interaction: CommandInteraction) => {
         console.log(interaction);
-        
         const content = "Votre vote a bien été pris en compte.";
 
         await interaction.followUp({
