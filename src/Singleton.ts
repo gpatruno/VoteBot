@@ -1,4 +1,5 @@
 import Timer from './Timer';
+const VoteBotError = require('./error/VoteBotError');
 
 /**
  * The Singleton class defines the `getInstance` method that lets clients access
@@ -69,7 +70,7 @@ export default class Singleton {
     private getVoteContre(): number {
         let nbNo: number = 0;
         Singleton.mVote.forEach((value: boolean, key: String) => {
-            nbNo = (Singleton.mVote.get(key)) ? nbNo : nbNo + 1;
+            nbNo = (value) ? nbNo : nbNo + 1;
         });
         return nbNo;
     }
@@ -77,8 +78,8 @@ export default class Singleton {
     private getVotePour(): number {
         let nbYes: number = 0;
         Singleton.mVote.forEach((value: boolean, key: String) => {
-            nbYes = (Singleton.mVote.get(key)) ? nbYes + 1 : nbYes ;
-        });
+            nbYes = (value) ? nbYes + 1 : nbYes ;
+        });        
         return nbYes;
     }
 
@@ -105,8 +106,10 @@ function clientCode() {
     console.log(s2.setVote("marc", true));
     console.log(s2.getCurrentVote());
 
+    
     if (s1 === s2) {
         console.log('Singleton works, both variables contain the same instance.');
+        throw new VoteBotError('FileNotFound', 'testFile.txt');
     } else {
         console.log('Singleton failed, variables contain different instances.');
     }
